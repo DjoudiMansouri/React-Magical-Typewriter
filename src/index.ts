@@ -1,0 +1,1 @@
+export { default as ReactMagicalTypewriter } from './ReactMagicalTypewriter';
