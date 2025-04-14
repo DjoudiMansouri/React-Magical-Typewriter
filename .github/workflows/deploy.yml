@@ -16,6 +16,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
       
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -24,10 +29,10 @@ jobs:
           cache: 'pnpm'
       
       - name: Install dependencies
-        run: npm ci
+        run: pnpm ci
       
       - name: Build demo
-        run: npm run build:demo
+        run: pnpm run build:demo
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
