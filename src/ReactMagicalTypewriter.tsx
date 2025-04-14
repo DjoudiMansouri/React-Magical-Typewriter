@@ -67,15 +67,21 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
           }
         ]);
       }, typingSpeed);
-    } else if (!isComplete) {
-      setIsComplete(true);
-      setTimeout(() => {
-        onComplete();
-      }, delayAfterTyping);
     }
 
     return () => clearTimeout(timeoutRef);
-  }, [displayedChars, text, typingSpeed, delayAfterTyping, onComplete, isComplete]);
+  }, [displayedChars, text, typingSpeed]);
+
+    // Handle completion after typing
+    useEffect(() => {
+      if (displayedChars.length === text.length && !isComplete) {
+        setIsComplete(true);
+        const timeout = setTimeout(() => {
+          onComplete();
+        }, delayAfterTyping);
+        return () => clearTimeout(timeout);
+      }
+    }, [displayedChars, text, isComplete, delayAfterTyping, onComplete]);  
 
   // Setup cursor blinking
   useEffect(() => {

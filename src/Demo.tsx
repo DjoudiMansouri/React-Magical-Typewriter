@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactMagicalTypewriter from './ReactMagicalTypewriter';
 import { PredefinedAnimationStyle } from './ReactMagicalTypewriter';
 
-export const App: React.FC = () => {
+export const Demo: React.FC = () => {
   const [selectedStyle, setSelectedStyle] = useState<PredefinedAnimationStyle>('Elegant');
   const [isRestarting, setIsRestarting] = useState<boolean>(false);
   
@@ -40,7 +40,7 @@ export const App: React.FC = () => {
       case 'Warp':
         return 0.5;
       case 'Arise':
-        return 3;
+        return 1;
       default:
         return 0.5;
     }
@@ -98,12 +98,12 @@ export const App: React.FC = () => {
         {!isRestarting && (
           <ReactMagicalTypewriter
             text={selectedStyle}
-            typingSpeed={200}
+            typingSpeed={300}
             animationStyle={selectedStyle}
             cursorCharacter={getCursorCharacter()}
             cursorInvert={getCursorInvert()}
             charAnimationSpeed={getCharAnimationSpeed()}
-            className="text-3xl font-bold"
+            className="text-5xl font-bold"
           />
         )}
       </div>
