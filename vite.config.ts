@@ -10,7 +10,10 @@ export default defineConfig({
     tailwindcss(),
     dts({ include: ['src'] })
   ],
-  base: '/react-magical-typewriter/',
+  base: '/React-Magical-Typewriter/',
+  css: {
+    postcss: './postcss.config.mjs', 
+  },
   build: {
     outDir: 'dist',
     lib: {

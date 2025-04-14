@@ -5,6 +5,9 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   base: '/React-Magical-Typewriter/',
+  css: {
+    postcss: './postcss.config.mjs',
+  },
   build: {
     outDir: 'demo-dist',
   }
