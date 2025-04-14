@@ -22,7 +22,8 @@
     "dev": "vite",
     "build": "tsc -p tsconfig.build.json && vite build",
     "build:demo": "vite build --outDir demo-dist --config vite.demo.config.ts",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "preview": "vite preview --outDir demo-dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.1",
