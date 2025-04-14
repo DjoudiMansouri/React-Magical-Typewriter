@@ -20,6 +20,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -p tsconfig.build.json && vite build",
+    "build:demo": "tsc -p tsconfig.demo.json && vite build",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
