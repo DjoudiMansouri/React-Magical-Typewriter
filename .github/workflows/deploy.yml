@@ -41,6 +41,15 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './demo-dist'
+      - name: Copy .nojekyll
+        run: |
+          touch demo-dist/.nojekyll
+      - name: Debug build output
+        run: |
+          echo "Contents of demo-dist:"
+          ls -la demo-dist/
+          echo "Contents of assets directory:"
+          ls -la demo-dist/assets/
 
   deploy:
     environment:
