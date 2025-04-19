@@ -7,7 +7,7 @@
 A highly customizable typewriter effect component for React with beautiful GSAP-powered animations. Create engaging, eye-catching text animations with minimal effort!
 
 <p align="center">
-  <img src="/api/placeholder/640/320" alt="React Magical Typewriter Demo" />
+  <img src="/public/React-Magical-Typewriter-Demo.gif" alt="React Magical Typewriter Demo" />
 </p>
 
 ## ✨ Features
@@ -53,7 +53,7 @@ function App() {
 
 ## 🎮 Live Demo
 
-See it in action here: [React Magical Typewriter Demo]([https://example.com/demo](https://djoudimansouri.github.io/React-Magical-Typewriter/))
+See it in action here: [React Magical Typewriter Demo]([https://djoudimansouri.github.io/React-Magical-Typewriter/](https://djoudimansouri.github.io/React-Magical-Typewriter/))
 
 ## 📚 Animation Styles
 
@@ -313,7 +313,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 If you find this package useful, consider buying me a coffee! Your support helps maintain this project and fuels future development 😄
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)]([https://www.buymeacoffee.com/yourusername](https://buymeacoffee.com/djoudimansouri))
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)]([https://www.buymeacoffee.com/djoudimansouri](https://buymeacoffee.com/djoudimansouri))
 
 ## 📄 License
 
