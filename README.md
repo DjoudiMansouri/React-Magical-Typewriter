@@ -317,4 +317,4 @@ If you find this package useful, consider buying me a coffee! Your support helps
 
 ## 📄 License
 
-MIT © [Your Name]
+MIT © [Djoudi Mansouri]
