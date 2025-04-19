@@ -53,7 +53,7 @@ function App() {
 
 ## 🎮 Live Demo
 
-See it in action here: [React Magical Typewriter Demo](https://example.com/demo)
+See it in action here: [React Magical Typewriter Demo]([https://example.com/demo](https://djoudimansouri.github.io/React-Magical-Typewriter/))
 
 ## 📚 Animation Styles
 
@@ -308,6 +308,12 @@ const MyComponent: React.FC = () => {
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Support
+
+If you find this package useful, consider buying me a coffee! Your support helps maintain this project and fuels future development 😄
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)]([https://www.buymeacoffee.com/yourusername](https://buymeacoffee.com/djoudimansouri))
 
 ## 📄 License
 
