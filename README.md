@@ -53,7 +53,7 @@ function App() {
 
 ## 🎮 Live Demo
 
-See it in action here: [React Magical Typewriter Demo]([https://djoudimansouri.github.io/React-Magical-Typewriter/](https://djoudimansouri.github.io/React-Magical-Typewriter/))
+See it in action here: [React Magical Typewriter Demo](https://djoudimansouri.github.io/React-Magical-Typewriter/)
 
 ## 📚 Animation Styles
 
@@ -313,7 +313,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 If you find this package useful, consider buying me a coffee! Your support helps maintain this project and fuels future development 😄
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)]([https://www.buymeacoffee.com/djoudimansouri](https://buymeacoffee.com/djoudimansouri))
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/djoudimansouri)
 
 ## 📄 License
 
