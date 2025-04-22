@@ -7,7 +7,7 @@
 A highly customizable typewriter effect component for React with beautiful GSAP-powered animations. Create engaging, eye-catching text animations with minimal effort!
 
 <p align="center">
-  <img src="/public/React-Magical-Typewriter-Demo.gif" alt="React Magical Typewriter Demo" />
+  <img src="https://github.com/DjoudiMansouri/React-Magical-Typewriter/blob/main/public/React-Magical-Typewriter-Demo.gif" alt="React Magical Typewriter Demo" />
 </p>
 
 ## ✨ Features
@@ -275,6 +275,22 @@ The component uses inline-block span elements, making it easy to style with CSS 
   font-size: 2rem;
   color: #8a2be2;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+```
+
+If you need to reproduce the clipping effects for Landing and Arise animations, i suggest you add these styles: 
+
+On TailwindCSS : 
+
+```jsx
+"[clip-path:polygon(0_-5%,100%_-5%,100%_105%,0%_105%)]"
+```
+
+On pure CSS : 
+
+```jsx
+.clippedText {
+  clip-path: polygon(0 -5%, 100% -5%, 100% 105%, 0% 105%);
 }
 ```
 
