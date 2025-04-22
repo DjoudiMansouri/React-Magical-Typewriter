@@ -6,18 +6,15 @@
   "homepage": "https://github.com/DjoudiMansouri/React-Magical-Typewriter",
   "license": "MIT",
   "type": "module",
-  "files": [
-      "dist",
-      "react-magical-typewriter.d.ts"  
-  ],
+  "files": ["dist"],
   "main": "./dist/react-magical-typewriter.umd.js",
   "module": "./dist/react-magical-typewriter.es.js",
-  "types": "./react-magical-typewriter.d.ts",  
+  "types": "./dist/types/src/ReactMagicalTypewriter.d.ts",
   "exports": {
     ".": {
       "import": "./dist/react-magical-typewriter.es.js",
       "require": "./dist/react-magical-typewriter.umd.js",
-      "types": "./react-magical-typewriter.d.ts"  
+      "types": "./dist/types/src/ReactMagicalTypewriter.d.ts"
     }
   },
   "scripts": {
