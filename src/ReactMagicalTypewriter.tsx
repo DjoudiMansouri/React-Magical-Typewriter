@@ -1,8 +1,6 @@
-// ReactMagicalTypewriter.tsx
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import './index.css'
-
 
 // Types
 export type PredefinedAnimationStyle = 'Elegant' | 'Whimsical' | 'Landing' | 'Arise' | 'Rift' | 'Warp';
@@ -16,7 +14,7 @@ export interface CustomAnimation {
 
 export type AnimationStyle = PredefinedAnimationStyle | CustomAnimation;
 
-interface TypewriterProps {
+export interface TypewriterProps {
   text: string;
   typingSpeed?: number;
   delayAfterTyping?: number;
@@ -29,7 +27,7 @@ interface TypewriterProps {
   className?: string;
 }
 
-interface CharacterItem {
+export interface CharacterItem {
   char: string;
   id: string;
 }

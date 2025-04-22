@@ -1,17 +1,26 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import { resolve } from 'path';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [
     react(),
-    dts({ include: ['src'] })
+    dts({
+      include: ['src'],
+      exclude: [
+        'src/demo', 
+        '**/*.test.ts', 
+        '**/*.test.tsx', 
+        '**/*.stories.tsx',
+        '**/*.gif',
+        '**/*.svg'
+      ],
+      tsconfigPath: './tsconfig.build.json',
+      rollupTypes: true,
+    }),
   ],
   base: '/React-Magical-Typewriter/',
-  css: {
-    postcss: './postcss.config.mjs', 
-  },
   build: {
     outDir: 'dist',
     lib: {
@@ -20,10 +29,8 @@ export default defineConfig({
       fileName: (format) => `react-magical-typewriter.${format}.js`
     },
     rollupOptions: {
-      // Make sure to externalize deps that shouldn't be bundled
       external: ['react', 'react-dom', 'gsap'],
       output: {
-        // Provide global variables to use in the UMD build
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
@@ -32,4 +39,4 @@ export default defineConfig({
       }
     }
   }
-})
+});

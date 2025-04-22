@@ -2,5 +2,7 @@ export { ReactMagicalTypewriter, default } from './ReactMagicalTypewriter';
 export type { 
   PredefinedAnimationStyle,
   CustomAnimation,
-  AnimationStyle
+  AnimationStyle,
+  TypewriterProps,
+  CharacterItem
 } from './ReactMagicalTypewriter';

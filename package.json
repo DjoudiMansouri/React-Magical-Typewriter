@@ -2,7 +2,7 @@
   "name": "react-magical-typewriter",
   "description": "A customizable typewriter effect component for React with GSAP animations",
   "author": "Djoudi Mansouri",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage": "https://github.com/DjoudiMansouri/React-Magical-Typewriter",
   "license": "MIT",
   "type": "module",
@@ -11,12 +11,12 @@
   ],
   "main": "./dist/react-magical-typewriter.umd.js",
   "module": "./dist/react-magical-typewriter.es.js",
-  "types": "./dist/types/src/ReactMagicalTypewriter.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/react-magical-typewriter.es.js",
       "require": "./dist/react-magical-typewriter.umd.js",
-      "types": "./dist/types/src/ReactMagicalTypewriter.d.ts"
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
