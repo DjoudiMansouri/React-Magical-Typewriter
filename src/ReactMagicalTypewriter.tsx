@@ -1,7 +1,7 @@
 // ReactMagicalTypewriter.tsx
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-
+import './index.css'
 
 
 // Types
