@@ -268,13 +268,15 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
   return (
     <span 
       ref={containerRef}
-      className={`inline-block relative ${(animationStyle === "Arise" || animationStyle === "Landing") ? "[clip-path:polygon(0_-5%,100%_-5%,100%_105%,0%_105%)]" : ""} ${className}`}
+      className={`react-magical-typewriter-container ${
+        (animationStyle === "Arise" || animationStyle === "Landing") ? "clip-path-overflow" : ""
+      } ${className}`}
     >
       {displayedChars.map((item, index) => (
         <span
           key={item.id}
           ref={(el) => registerCharRef(el, index)}
-          className="inline-block relative"
+          className="react-magical-typewriter-char"
         >
             {item.char === ' ' ? '\u00A0' : item.char}
         </span>
@@ -282,10 +284,10 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
       
       {/* Cursor */}
       <span 
-        className={`inline-block ml-1 ${
-          cursorInvert === 'horizontal' ? 'scale-x-[-1]' : 
-          cursorInvert === 'vertical' ? 'scale-y-[-1]' : 
-          cursorInvert === 'both' ? 'scale-x-[-1] scale-y-[-1]' : 
+        className={`react-magical-typewriter-cursor ${
+          cursorInvert === 'horizontal' ? 'cursor-invert-horizontal' : 
+          cursorInvert === 'vertical' ? 'cursor-invert-vertical' : 
+          cursorInvert === 'both' ? 'cursor-invert-both' : 
           cursorInvert === 'none' ? '' : cursorInvert
         }`}
         style={{ opacity: showCursor ? 1 : 0 }}

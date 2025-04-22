@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactMagicalTypewriter from './ReactMagicalTypewriter';
 import { PredefinedAnimationStyle } from './ReactMagicalTypewriter';
+import './index.css'
 
 export const Demo: React.FC = () => {
   const [selectedStyle, setSelectedStyle] = useState<PredefinedAnimationStyle>('Elegant');
@@ -72,29 +73,29 @@ export const Demo: React.FC = () => {
       case 'Rift':
         return "horizontal";
       case 'Warp':
-        return "rotate-270"; 
+        return "cursor-rotate-270"; 
       default:
         return "none";
     }
   };
 
   return (
-    <div className="h-screen flex flex-col items-center p-8 min-h-64 bg-gray-100 rounded-lg">
-      <h2 className="text-2xl font-bold mb-6">React Magical Typewriter Demo</h2>
+    <div className="demo-container">
+      <h2 className="demo-heading">React Magical Typewriter Demo</h2>
       
-      <div className="flex flex-wrap justify-center gap-2 mb-8">
+      <div className="demo-button-group">
         {(['Elegant', 'Whimsical', 'Landing', 'Arise', 'Rift', 'Warp'] as PredefinedAnimationStyle[]).map((style) => (
           <button 
             key={style}
             onClick={() => handleStyleChange(style)} 
-            className={`px-4 py-2 rounded ${selectedStyle === style ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+            className={`demo-button ${selectedStyle === style ? 'demo-button-active' : 'demo-button-inactive'}`}
           >
             {style.charAt(0).toUpperCase() + style.slice(1)}
           </button>
         ))}
       </div>
       
-      <div className="h-48 flex items-center justify-center bg-white p-6 w-full rounded shadow">
+      <div className="demo-typewriter-container">
         {!isRestarting && (
           <ReactMagicalTypewriter
             text={selectedStyle}
@@ -103,15 +104,19 @@ export const Demo: React.FC = () => {
             cursorCharacter={getCursorCharacter()}
             cursorInvert={getCursorInvert()}
             charAnimationSpeed={getCharAnimationSpeed()}
-            className="text-5xl font-bold"
+            className="demo-typewriter-text"
           />
         )}
       </div>
       
-      <div className="mt-8 text-sm text-gray-600">
-        <h3 className="font-medium mb-2">Current Style: <span className="text-blue-600">{selectedStyle}</span></h3>
-        <p className="italic">{renderStyleDescription()}</p>
-        <p className="mt-1">Cursor: {getCursorCharacter()} (Rotate/Invert: {getCursorInvert()})</p>
+      <div className="demo-footer">
+        <h3 className="demo-footer-heading">
+          Current Style: <span className="demo-footer-highlight">{selectedStyle}</span>
+        </h3>
+        <p className="demo-footer-italic">{renderStyleDescription()}</p>
+        <p className="demo-footer-info">
+          Cursor: {getCursorCharacter()} (Rotate/Invert: {getCursorInvert()})
+        </p>
       </div>
     </div>
   );
