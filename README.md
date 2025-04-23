@@ -22,14 +22,20 @@ A highly customizable typewriter effect component for React with beautiful GSAP-
 ## 📦 Installation
 
 ```bash
-npm install react-magical-typewriter gsap
+npm install react-magical-typewriter
 # or
-yarn add react-magical-typewriter gsap
+yarn add react-magical-typewriter
 # or my favorite
-pnpm add react-magical-typewriter gsap
+pnpm add react-magical-typewriter
 ```
 
-> GSAP is required as a peer dependency
+### Very important
+
+Make sure to import the styles, if you want access to all the features
+
+```jsx
+import '/node_modules/react-magical-typewriter/dist/react-magical-typewriter.css';
+```
 
 ## 🚀 Quick Start
 
