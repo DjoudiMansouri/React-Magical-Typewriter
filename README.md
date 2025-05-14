@@ -12,7 +12,7 @@ A highly customizable typewriter effect component for React with beautiful GSAP-
 
 ## ✨ Features
 
-- 🎭 **6 Pre-built animation styles** - Choose from elegant fades, playful movements, and more
+- 🎭 **14 Pre-built animation styles** - Choose from elegant fades, playful movements, and more
 - 🔧 **Fully customizable** - Create your own animations with complete GSAP flexibility
 - ⚡ **Performance optimized** - Smooth animations even on large blocks of text
 - 📱 **Responsive** - Works great on all devices and screen sizes
@@ -63,61 +63,127 @@ See it in action here: [React Magical Typewriter Demo](https://djoudimansouri.gi
 
 ## 📚 Animation Styles
 
+
 ### Built-in Animation Styles:
 
 #### Elegant
+
 Clean, simple fade-in animation that looks professional.
+
 ```jsx
-<ReactMagicalTypewriter 
-  text="Professional and clean typography"
-  animationStyle="Elegant"
-/>
+ <ReactMagicalTypewriter text="Hello World" animationStyle="Elegant" />
 ```
 
 #### Whimsical
-Playful, bouncy animations with randomized movements.
+
+Playful, bouncy animations with randomized movements and rotations.
+
 ```jsx
-<ReactMagicalTypewriter 
-  text="Fun and playful text effects!"
-  animationStyle="Whimsical"
-/>
+ <ReactMagicalTypewriter text="Hello World" animationStyle="Whimsical" />
 ```
 
 #### Landing
-Characters drop in from above with a slight bounce.
+
+Characters drop in from above with a slight elastic bounce.
+
 ```jsx
-<ReactMagicalTypewriter 
-  text="Dropping in from above"
-  animationStyle="Landing"
-/>
+ <ReactMagicalTypewriter text="Hello World" animationStyle="Landing" />
 ```
 
 #### Arise
-Characters rise from below with a smooth motion.
+
+Characters rise from below with a smooth, powerful motion.
+
 ```jsx
-<ReactMagicalTypewriter 
-  text="Rising up from below"
-  animationStyle="Arise"
-/>
+ <ReactMagicalTypewriter text="Hello World" animationStyle="Arise" />
 ```
 
 #### Rift
-Characters appear with a spinning scale effect.
+
+Characters appear with a dramatic spinning and scaling effect, as if from a dimensional rift.
+
 ```jsx
-<ReactMagicalTypewriter 
-  text="Spinning into existence"
-  animationStyle="Rift"
-/>
+ <ReactMagicalTypewriter text="Hello World" animationStyle="Rift" />
 ```
 
 #### Warp
-Characters stretch in horizontally with an elastic effect.
+
+Characters stretch in horizontally with an elastic, warp-like effect.
+
 ```jsx
-<ReactMagicalTypewriter 
-  text="Warping into view"
-  animationStyle="Warp"
-/>
+ <ReactMagicalTypewriter text="Hello World" animationStyle="Warp" />
 ```
+
+---
+🆕 **New Animation Styles:**
+---
+
+#### RadialBurst
+
+Each character explodes into view with radiating light rays before settling into place.
+
+```jsx
+ <ReactMagicalTypewriter text="Hello World" animationStyle="RadialBurst" />
+```
+
+#### LiquidDrip
+
+Characters "drip" into place from above, like fluid ink, with a slight stretch and settle.
+
+```jsx
+ <ReactMagicalTypewriter text="Hello World" animationStyle="LiquidDrip" />
+```
+
+#### LaserSketch
+
+Characters are "drawn" or "sketched" in diagonally by an imaginary laser, followed by a quick flash.
+
+```jsx
+ <ReactMagicalTypewriter text="Hello World" animationStyle="LaserSketch" />
+```
+
+#### FlipReveal
+
+Characters flip into view with a 3D rotation around the Y-axis, as if turning over a card.
+
+```jsx
+ <ReactMagicalTypewriter text="Hello World" animationStyle="FlipReveal" />
+```
+
+#### PixelGlitch
+
+Characters initially appear pixelated, blurry, and skewed, then quickly resolve into a clear state.
+
+```jsx
+ <ReactMagicalTypewriter text="Hello World" animationStyle="PixelGlitch" />
+```
+
+#### GhostTrail
+
+Each character appears quickly, leaving a faint, fading echo or "ghost" trailing behind it.
+
+```jsx
+ <ReactMagicalTypewriter text="Hello World" animationStyle="GhostTrail" />
+```
+
+#### ShatterIn
+
+Characters form as small, scattered fragments quickly converge and assemble into the final letter.
+
+```jsx
+ <ReactMagicalTypewriter text="Hello World" animationStyle="ShatterIn" />
+```
+
+#### OrigamiReveal
+
+Characters unfold into place as if made of paper, with skews and scaling that mimic an origami reveal.
+
+```jsx
+ <ReactMagicalTypewriter text="Hello World" animationStyle="OrigamiReveal" />
+```
+
+
+I've tried to make the descriptions concise and evocative, matching the style of your existing documentation. I've also added placeholder JSX examples, assuming they would be used similarly.
 
 ### Custom Animations
 

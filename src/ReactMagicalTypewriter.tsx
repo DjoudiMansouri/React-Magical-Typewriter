@@ -25,6 +25,7 @@ export interface TypewriterProps {
   cursorBlinkSpeed?: number;
   charAnimationSpeed?: number;
   animationStyle?: AnimationStyle;
+  ghostTrailColor?: string;
   cursorInvert?: 'horizontal' | 'vertical' | 'both' | 'none' | string;
   onComplete?: () => void;
   className?: string;
@@ -44,6 +45,7 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
   cursorBlinkSpeed = 500,
   charAnimationSpeed = 0.7,
   animationStyle = 'Elegant',
+  ghostTrailColor = 'rgba(100, 149, 237, 0.7)',
   cursorInvert = 'none',
   onComplete = () => {},
   className = '',
@@ -99,7 +101,7 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
         fontFamily: window.getComputedStyle(element).fontFamily,
         fontWeight: window.getComputedStyle(element).fontWeight,
         lineHeight: window.getComputedStyle(element).lineHeight,
-        color: 'rgba(100, 149, 237, 0.7)', 
+        color: ghostTrailColor, 
         opacity: 0.7 - (i * 0.15), 
         zIndex: 1, // Should be behind characters in the same container
         pointerEvents: 'none',
