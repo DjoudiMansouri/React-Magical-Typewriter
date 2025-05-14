@@ -17,11 +17,14 @@ html {
   .react-magical-typewriter-char {
     display: inline-block;
     position: relative;
+    white-space: pre-wrap; /* Handles spaces correctly */
+    will-change: transform, opacity, filter, clip-path; /* Performance hint for browser */
   }
   
   .react-magical-typewriter-cursor {
     display: inline-block;
     margin-left: 0.25rem;
+    user-select: none; /* Prevent cursor character from being selected */
   }
   
   .cursor-invert-horizontal {
@@ -188,4 +191,33 @@ html {
   height: 4px;
   background: linear-gradient(90deg, #3b82f6, #8b5cf6);
   opacity: 0.7;
+}
+
+.react-magical-typewriter-char.char-lasersketch-overflow {
+  overflow: hidden;
+}
+
+.react-magical-typewriter-ghost,
+.react-magical-typewriter-fragment {
+  /* GSAP sets position, top, left, etc. */
+  display: inline-block; /* Ensure they behave like spans */
+  pointer-events: none; /* Prevent interaction */
+  white-space: pre-wrap; /* Match original char spacing */
+  will-change: transform, opacity;
+}
+
+.react-magical-typewriter-fragment {
+   overflow: hidden; /* Important for the clip-path on fragments */
+}
+
+.char-lasersketch {
+  overflow: hidden; /* LaserSketch needs to clip its own drawing */
+}
+.char-radialburst {
+  position: relative; /* Ensure rays are positioned relative to the char */
+  z-index: 1; /* Character above rays */
+}
+
+.char-ghosttrail-active {
+  z-index: 2;
 }

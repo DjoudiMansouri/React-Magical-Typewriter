@@ -24,9 +24,25 @@ export const Demo: React.FC = () => {
       case 'Arise':
         return "Letters rise from bottom in a staggered pattern.";
       case 'Rift':
-        return "Letters tear through space-time !";
+        return "Letters tear through space-time!";
       case 'Warp':
         return "Letters come out of a wormhole at the speed of light...";
+      case 'RadialBurst':
+        return "Letters appear with a bursting radial light effect, like tiny explosions.";
+      case 'LiquidDrip':
+        return "Letters flow in like liquid droplets from above, settling with a splashy effect.";
+      case 'LaserSketch':
+        return "Letters are drawn rapidly by an invisible laser, outline first then filled.";
+      case 'FlipReveal':
+        return "Letters flip in 3D space, rotating from behind to reveal themselves.";
+      case 'PixelGlitch':
+        return "Letters appear pixelated and glitchy before stabilizing into clarity.";
+      case 'GhostTrail':
+        return "Letters appear with ghostly blue echoes trailing behind them.";
+      case 'ShatterIn':
+        return "Letter fragments fly in from different directions to form the complete character.";
+      case 'OrigamiReveal':
+        return "Letters unfold like paper origami, unfolding from a flat state.";
       default:
         return "";
     }
@@ -42,6 +58,21 @@ export const Demo: React.FC = () => {
         return 0.5;
       case 'Arise':
         return 1;
+      case 'RadialBurst':
+      case 'ShatterIn':
+        return 0.8;
+      case 'LiquidDrip':
+        return 0.7;
+      case 'LaserSketch':
+        return 0.9;
+      case 'FlipReveal':
+        return 0.6;
+      case 'PixelGlitch':
+        return 0.7;
+      case 'GhostTrail':
+        return 0.6;
+      case 'OrigamiReveal':
+        return 0.8;
       default:
         return 0.5;
     }
@@ -61,6 +92,22 @@ export const Demo: React.FC = () => {
         return "🌀";
       case 'Warp':
         return "🕳️";
+      case 'RadialBurst':
+        return "💥";
+      case 'LiquidDrip':
+        return "💧";
+      case 'LaserSketch':
+        return "✏️";
+      case 'FlipReveal':
+        return "🔄";
+      case 'PixelGlitch':
+        return "⚡";
+      case 'GhostTrail':
+        return "👻";
+      case 'ShatterIn':
+        return "🧩";
+      case 'OrigamiReveal':
+        return "📄";
       default:
         return "✨";
     }
@@ -74,9 +121,34 @@ export const Demo: React.FC = () => {
         return "horizontal";
       case 'Warp':
         return "cursor-rotate-270"; 
+      case 'FlipReveal':
+        return "both";
+      case 'PixelGlitch':
+        return "cursor-glitch";
+      case 'OrigamiReveal':
+        return "vertical";
       default:
         return "none";
     }
+  };
+
+  const getAllStyles = (): PredefinedAnimationStyle[] => {
+    return [
+      'Elegant', 
+      'Whimsical', 
+      'Landing', 
+      'Arise', 
+      'Rift', 
+      'Warp',
+      'RadialBurst',
+      'LiquidDrip',
+      'LaserSketch',
+      'FlipReveal',
+      'PixelGlitch',
+      'GhostTrail',
+      'ShatterIn',
+      'OrigamiReveal'
+    ] as PredefinedAnimationStyle[];
   };
 
   return (
@@ -84,7 +156,7 @@ export const Demo: React.FC = () => {
       <h2 className="demo-heading">React Magical Typewriter Demo</h2>
       
       <div className="demo-button-group">
-        {(['Elegant', 'Whimsical', 'Landing', 'Arise', 'Rift', 'Warp'] as PredefinedAnimationStyle[]).map((style) => (
+        {getAllStyles().map((style) => (
           <button 
             key={style}
             onClick={() => handleStyleChange(style)} 
@@ -116,6 +188,9 @@ export const Demo: React.FC = () => {
         <p className="demo-footer-italic">{renderStyleDescription()}</p>
         <p className="demo-footer-info">
           Cursor: {getCursorCharacter()} (Rotate/Invert: {getCursorInvert()})
+        </p>
+        <p className="demo-footer-tip">
+          Click on any style button above to see the animation in action!
         </p>
       </div>
     </div>
