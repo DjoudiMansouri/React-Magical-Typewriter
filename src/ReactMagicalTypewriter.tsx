@@ -361,6 +361,7 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
       }
       else if (style === 'ShatterIn') {
         const fragments = createShatterFragments(element, charItem.char, lastIndex);
+        // Hide the original element initially
         gsap.set(element, { opacity: 0 });
 
         if (fragments.length > 0) {
@@ -374,26 +375,81 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
             height: charRect.height,
             rotation: 0,
             scale: 1,
-            opacity: 0.7,
+            opacity: 0.7, // You might want fragments to be fully opaque if they represent the final letter
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
             duration: charAnimationSpeed,
             stagger: { amount: charAnimationSpeed * 0.3, from: "random" },
             ease: "quad.out",
             onComplete: () => {
-              gsap.to(element, { opacity: 1, duration: 0.1 });
+              // Make the original element visible instantly
+              gsap.set(element, { opacity: 1 });
               fragments.forEach(f => f.remove());
             }
           });
         } else {
-          gsap.to(element, { opacity: 1, duration: 0.1 });
+          // If no fragments, make the original element visible instantly
+          gsap.set(element, { opacity: 1 });
         }
       }
       else if (style === 'OrigamiReveal') {
-        gsap.set(element, { opacity: 1, scaleY: 0, skewX: '35deg', transformOrigin: 'bottom center' });
+        // Define a more specific type for fold directions
+        interface FoldDirectionConfig {
+          origin: string;
+          scaleProp: 'scaleX' | 'scaleY'; // Explicitly 'scaleX' or 'scaleY'
+          skewSign: 1 | -1;
+        }
+
+        const foldDirections: FoldDirectionConfig[] = [
+          { origin: 'bottom center', scaleProp: 'scaleY', skewSign: 1 },
+          { origin: 'top center', scaleProp: 'scaleY', skewSign: -1 },
+          { origin: 'center left', scaleProp: 'scaleX', skewSign: 1 },
+          { origin: 'center right', scaleProp: 'scaleX', skewSign: -1 },
+          { origin: 'top left', scaleProp: 'scaleY', skewSign: -1 },
+          { origin: 'top left', scaleProp: 'scaleX', skewSign: 1 },
+          { origin: 'top right', scaleProp: 'scaleY', skewSign: -1 },
+          { origin: 'top right', scaleProp: 'scaleX', skewSign: -1 },
+          { origin: 'bottom left', scaleProp: 'scaleY', skewSign: 1 },
+          { origin: 'bottom left', scaleProp: 'scaleX', skewSign: 1 },
+          { origin: 'bottom right', scaleProp: 'scaleY', skewSign: 1 },
+          { origin: 'bottom right', scaleProp: 'scaleX', skewSign: -1 },
+        ];
+
+        const chosenDirection = foldDirections[Math.floor(Math.random() * foldDirections.length)];
+
+        const initialSkewValue = chosenDirection.skewSign * 35;
+        const intermediateSkewValue = chosenDirection.skewSign * -15;
+        const finalOvershootSkewValue = chosenDirection.skewSign * 5;
+
+        // Set initial state using computed property name for the scale property
+        const initialState = {
+          opacity: 1,
+          transformOrigin: chosenDirection.origin,
+          skewX: `${initialSkewValue}deg`,
+          [chosenDirection.scaleProp]: 0, // Dynamically sets scaleX: 0 or scaleY: 0
+        };
+        gsap.set(element, initialState);
+
         const tl = gsap.timeline();
-        tl.to(element, { scaleY: 1, skewX: '-15deg', duration: charAnimationSpeed * 0.5, ease: "power3.out" })
-          .to(element, { skewX: '5deg', duration: charAnimationSpeed * 0.25, ease: "power1.inOut" })
-          .to(element, { skewX: '0deg', duration: charAnimationSpeed * 0.25, ease: "elastic.out(1, 0.6)" });
+
+        // Define animation properties using computed property name for the scale property
+        const firstTweenProps = {
+          skewX: `${intermediateSkewValue}deg`,
+          duration: charAnimationSpeed * 0.5,
+          ease: "power3.out",
+          [chosenDirection.scaleProp]: 1, // Dynamically sets scaleX: 1 or scaleY: 1
+        };
+
+        tl.to(element, firstTweenProps)
+          .to(element, {
+            skewX: `${finalOvershootSkewValue}deg`,
+            duration: charAnimationSpeed * 0.25,
+            ease: "power1.inOut"
+          })
+          .to(element, {
+            skewX: '0deg',
+            duration: charAnimationSpeed * 0.25,
+            ease: "elastic.out(1, 0.6)"
+          });
       }
     }
   }, [displayedChars, animationStyle, charAnimationSpeed, text.length]);
