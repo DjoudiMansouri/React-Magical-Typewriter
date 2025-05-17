@@ -8,6 +8,13 @@ html {
 .react-magical-typewriter-container {
     display: inline-block;
     position: relative;
+    white-space: normal;  /* Changed from pre-wrap to normal */
+    word-break: normal;   /* Changed from keep-all to normal */
+    overflow-wrap: normal; /* Changed from break-word to normal */
+    text-align: left;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
   }
   
 .clip-path-overflow {
@@ -17,8 +24,13 @@ html {
 .react-magical-typewriter-char {
   display: inline-block;
   position: relative;
-  white-space: pre-wrap; /* Handles spaces correctly */
+  white-space: pre-line;
   will-change: transform, opacity, filter, clip-path; /* Performance hint for browser */
+}
+
+.typewriter-word-or-space-segment {
+  display: inline-block; /* This is the crucial part to prevent breaking within the segment */
+  /* vertical-align: baseline; */ /* Or top/middle; adjust if animations cause vertical misalignments */
 }
 
 .react-magical-typewriter-cursor {

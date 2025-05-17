@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { gsap } from 'gsap';
 import './index.css';
 
@@ -55,6 +55,16 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
   const [isComplete, setIsComplete] = useState<boolean>(false);
   const containerRef = useRef<HTMLSpanElement>(null);
   const charsRef = useRef<HTMLSpanElement[]>([]);
+
+
+  const wordSegments = useMemo(() => {
+    // This regex splits the text by sequences of one or more whitespace characters (\s+)
+    // and keeps the delimiters (whitespace sequences) as separate segments in the array.
+    // .filter(Boolean) removes any empty strings that might result from the split.
+    return text.split(/(\s+)/).filter(Boolean);
+  }, [text]);
+
+  let charIdxInDisplayedChars = 0;
 
   // --- Helper Functions for Dynamic Elements ---
 
@@ -302,7 +312,8 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
       else if (style === 'LaserSketch') {
         gsap.set(element, { 
           opacity: 1, 
-          display: 'inline'
+          display: 'inline-block',  
+          verticalAlign: 'middle',  
         });
         const tl = gsap.timeline();
         tl.to(element, {
@@ -316,12 +327,12 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
           ease: "power1.inOut"
         });
         tl.to(element, {
-          filter: 'brightness(2)',
+          opacity: 0.5,
           duration: charAnimationSpeed * 0.9,
           ease: "power2.in"
         });
         tl.to(element, {
-          filter: 'brightness(1)',
+          opacity: 1, 
           duration: charAnimationSpeed * 0.9,
           ease: "power2.out"
         });
@@ -466,21 +477,59 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
         ) ? "clip-path-overflow" : ""
       } ${className}`}
     >
-      {displayedChars.map((item, index) => (
-        <span
-          key={item.id}
-          ref={(el) => registerCharRef(el, index)}
-          className={`react-magical-typewriter-char ${
-            (typeof animationStyle === 'string' &&
-             ['RadialBurst', 'LaserSketch', 'ShatterIn'].includes(animationStyle)) ?
-             `char-${animationStyle.toLowerCase()}` : ''
-          } ${
-            animationStyle === 'GhostTrail' ? 'char-ghosttrail-active' : ''
-          }`}
-        >
-          {item.char === ' ' ? '\u00A0' : item.char}
-        </span>
-      ))}
+      {wordSegments.map((segment, segmentIndex) => {
+        const segmentCharsToRenderThisIteration: CharacterItem[] = [];
+        // Store the starting charIdxInDisplayedChars for this segment to correctly index refs
+        const refStartIndexForSegment = charIdxInDisplayedChars;
+  
+        for (let i = 0; i < segment.length; i++) {
+          if (charIdxInDisplayedChars < displayedChars.length) {
+            // This character of the segment is part of the currently "typed" characters
+            segmentCharsToRenderThisIteration.push(displayedChars[charIdxInDisplayedChars]);
+            charIdxInDisplayedChars++; // Advance for the next character from displayedChars
+          } else {
+            // We've processed all characters available in displayedChars
+            break;
+          }
+        }
+  
+        if (segmentCharsToRenderThisIteration.length === 0) {
+          // No characters from this segment are currently "typed" enough to be rendered.
+          // We still need to advance charIdxInDisplayedChars past the untyped part of this segment
+          // IF `displayedChars` was shorter than `text` but we were iterating `text`.
+          // But since we iterate based on `displayedChars.length`, if this is empty, subsequent
+          // segments also won't have characters. So, just return null.
+          // charIdxInDisplayedChars correctly reflects the number of characters processed from displayedChars.
+          return null;
+        }
+  
+        return (
+          <span
+            key={`segment-${segmentIndex}`}
+            className="typewriter-word-or-space-segment"
+          >
+            {segmentCharsToRenderThisIteration.map((charItem, indexWithinSegmentOutput) => {
+              // The index for the ref must be the character's original global position
+              const globalCharIndexForRef = refStartIndexForSegment + indexWithinSegmentOutput;
+              return (
+                <span
+                  key={charItem.id}
+                  ref={(el) => registerCharRef(el, globalCharIndexForRef)}
+                  className={`react-magical-typewriter-char ${
+                    (typeof animationStyle === 'string' &&
+                     ['RadialBurst', 'LaserSketch', 'ShatterIn'].includes(animationStyle)) ?
+                     `char-${animationStyle.toLowerCase()}` : ''
+                  } ${
+                    animationStyle === 'GhostTrail' ? 'char-ghosttrail-active' : ''
+                  }`}
+                >
+                  {charItem.char === ' ' ? '\u00A0' : charItem.char}
+                </span>
+              );
+            })}
+          </span>
+        );
+      })}
 
       <span
         className={`react-magical-typewriter-cursor ${
