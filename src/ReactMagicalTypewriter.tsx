@@ -300,26 +300,29 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
           .to(element, { y: '0%', scaleY: 1, scaleX: 1, duration: charAnimationSpeed * 0.35, ease: "elastic.out(1, 0.5)" });
       }
       else if (style === 'LaserSketch') {
-        gsap.set(element, { opacity: 1, clipPath: 'polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)' });
+        gsap.set(element, { 
+          opacity: 1, 
+          display: 'inline'
+        });
         const tl = gsap.timeline();
         tl.to(element, {
           clipPath: 'polygon(0% 0%, 100% 0%, 0% 0%, 0% 100%)',
-          duration: charAnimationSpeed * 0.4,
+          duration: charAnimationSpeed * 0.1,
           ease: "power1.inOut"
         });
         tl.to(element, {
-          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', // Full rectangle
-          duration: charAnimationSpeed * 0.4,
+          clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)',
+          duration: charAnimationSpeed * 0.7,
           ease: "power1.inOut"
         });
         tl.to(element, {
           filter: 'brightness(2)',
-          duration: charAnimationSpeed * 0.15,
+          duration: charAnimationSpeed * 0.9,
           ease: "power2.in"
         });
         tl.to(element, {
           filter: 'brightness(1)',
-          duration: charAnimationSpeed * 0.15,
+          duration: charAnimationSpeed * 0.9,
           ease: "power2.out"
         });
       }
@@ -458,8 +461,7 @@ const ReactMagicalTypewriter: React.FC<TypewriterProps> = ({
     <span
       ref={containerRef}
       className={`react-magical-typewriter-container ${
-        (animationStyle === "Arise" || animationStyle === "Landing" ||
-         animationStyle === "LaserSketch" || animationStyle === "PixelGlitch" ||
+        (animationStyle === "Arise" || animationStyle === "Landing" || animationStyle === "PixelGlitch" ||
          animationStyle === "LiquidDrip"
         ) ? "clip-path-overflow" : ""
       } ${className}`}

@@ -365,6 +365,10 @@ html {
   .demo-heading {
     font-size: 1.5rem;
   }
+  .demo-code-container {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+  }
 }
 
 /* Fixing cursor style specifics */

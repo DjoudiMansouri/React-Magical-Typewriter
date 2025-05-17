@@ -249,6 +249,18 @@ export const Demo: React.FC = () => {
                 )}
                 <span className="code-brace">{'}'}</span>
               </div>
+              {selectedStyle === "GhostTrail" ? 
+                <div className="demo-code-line">
+                  <span className="code-indent"></span>
+                  <span className="code-prop">ghostTrailColor</span>
+                  <span className="code-equals">=</span>
+                  <span className="code-brace">{'{'}</span>
+                  {!isRestarting && (
+                  <span className="code-string">'🟦rgba(100, 149, 237, 0.7)'</span>
+                  )}
+                  <span className="code-brace">{'}'}</span>
+                </div>
+              : null}
               <div className="demo-code-line">
                 <span className="code-indent"></span>
                 <span className="code-prop">cursorCharacter</span>
