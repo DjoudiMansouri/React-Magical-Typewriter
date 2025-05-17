@@ -224,6 +224,7 @@ Create your own animations using GSAP properties:
 | `cursorBlinkSpeed` | number | 500 | Blinking speed of cursor in ms |
 | `charAnimationSpeed` | number | 0.5 | Duration of character animations in seconds |
 | `animationStyle` | PredefinedAnimationStyle \| CustomAnimation | 'Elegant' | Animation style to use |
+| `ghostTrailColor` | string | '\🟦rgba(100, 149, 237, 0.7)' | Color of the ghost trail |
 | `cursorInvert` | 'horizontal' \| 'vertical' \| 'both' \| 'none' \| string | 'none' | Inversion direction for cursor |
 | `onComplete` | () => void | () => {} | Callback function called when typing is complete |
 | `className` | string | '' | Additional CSS classes |
